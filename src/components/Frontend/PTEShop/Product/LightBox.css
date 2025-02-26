@@ -1,0 +1,67 @@
+/* Lightbox.css */
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
+}
+
+.lightbox-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: hidden;
+}
+
+.lightbox-content img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.zoom-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.zoom-buttons button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 5px 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.zoom-buttons button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.vertical-gallery::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+}
+
+.vertical-gallery {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+.vertical-gallery {
+  overflow-y: scroll;
+}
+
+.current-image {
+  aspect-ratio: 1 / 1;
+}

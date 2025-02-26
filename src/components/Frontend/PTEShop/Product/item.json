@@ -1,0 +1,250 @@
+{
+  "products": {
+    "wire": [
+      {
+        "id": 1,
+        "title": "Headphone",
+        "description": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non lobortis risus. Vestibulum posuere dignissim ligula id porta. Phasellus id blandit dolor. Aliquam ut dolor vel lectus feugiat ornare. Nam convallis id neque quis  efficitur. Mauris posuere iaculis suscipit. Quisque non  sodales eros. Nunc at maximus diam, in vehicula nunc. Nulla  faucibus, neque sit amet fermentum sollicitudin, neque  mauris ornare nunc, eu maximus eros orci quis nibh. Sed nisi  felis, volutpat venenatis luctus sed, hendrerit sit amet purus. Nam placerat odio id tincidunt bibendum. Curabitur mollis vehicula risus nec varius. Pellentesque ac viverra  est. Donec tristique massa eget sem tincidunt, sit amet volutpat sem finibus. Phasellus sagittis nisi quis quamcongue, at dignissim urna maximus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam vel ante in ex tempus varius.  Praesent sit amet sapien vitae ligula pulvinar vestibulum ut  euismod magna. Aliquam erat volutpat. Morbi finibus eu sapien pretium pulvinar. Donec lacus nulla, rutrum vel neque  a, fermentum ultrices nisl. Aliquam blandit quam est, ut  condimentum dui suscipit quis. Integer non elit a nisi  sagittis faucibus.",
+        "price": "120",
+        "category": "headphone",
+
+        "stock": 10,
+        "attributes": {
+          "color": "black"
+        },
+        "variation": [
+          {
+            "title": "color",
+            "variants": ["blue", "black", "red"]
+          }
+        ],
+        "productPhoto": "headphone.jpg",
+        "gallery": [
+          "https://via.placeholder.com/600x400",
+          "https://via.placeholder.com/800x600",
+          "https://via.placeholder.com/1024x768"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Headphone",
+        "description": "john@example.com",
+        "price": "120",
+        "category": "headphone",
+
+        "stock": 10,
+        "attributes": {
+          "color": "black"
+        },
+        "variation": [
+          {
+            "title": "color",
+            "variants": ["blue", "black", "red"]
+          }
+        ],
+        "productPhoto": "headphone.jpg",
+        "gallery": [
+          "https://via.placeholder.com/600x400",
+          "https://via.placeholder.com/800x600",
+          "https://via.placeholder.com/1024x768"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Headphone",
+        "description": "john@example.com",
+        "price": "120",
+        "category": "headphone",
+
+        "stock": 10,
+        "attributes": {
+          "color": "black"
+        },
+        "variation": [
+          {
+            "title": "color",
+            "variants": ["blue", "black", "red"]
+          }
+        ],
+        "productPhoto": "headphone.jpg",
+        "gallery": [
+          "https://via.placeholder.com/600x400",
+          "https://via.placeholder.com/800x600",
+          "https://via.placeholder.com/1024x768"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Headphone",
+        "description": "john@example.com",
+        "price": "120",
+        "category": "headphone",
+
+        "stock": 10,
+        "attributes": {
+          "color": "black"
+        },
+        "variation": [
+          {
+            "title": "color",
+            "variants": ["blue", "black", "red"]
+          }
+        ],
+        "productPhoto": "headphone.jpg",
+        "gallery": [
+          "https://via.placeholder.com/600x400",
+          "https://via.placeholder.com/800x600",
+          "https://via.placeholder.com/1024x768"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Headphone",
+        "description": "john@example.com",
+        "price": "120",
+        "category": "headphone",
+
+        "stock": 0,
+        "attributes": {
+          "color": "black"
+        },
+        "variation": [
+          {
+            "title": "color",
+            "variants": ["blue", "black", "red"]
+          }
+        ],
+        "productPhoto": "headphone.jpg",
+        "gallery": [
+          "https://via.placeholder.com/600x400",
+          "https://via.placeholder.com/800x600",
+          "https://via.placeholder.com/1024x768"
+        ]
+      }
+    ],
+    "wireless": [
+      [
+        {
+          "id": 1,
+          "title": "Headphone",
+          "description": "john@example.com",
+          "price": "120",
+          "category": "headphone",
+
+          "stock": 10,
+          "attributes": {
+            "color": "black"
+          },
+          "variation": [
+            {
+              "title": "color",
+              "variants": ["blue", "black", "red"]
+            }
+          ],
+          "productPhoto": "headphone.jpg",
+          "gallery": [
+            "https://via.placeholder.com/600x400",
+            "https://via.placeholder.com/800x600",
+            "https://via.placeholder.com/1024x768"
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Headphone",
+          "description": "john@example.com",
+          "price": "120",
+          "category": "headphone",
+
+          "stock": 10,
+          "attributes": {
+            "color": "black"
+          },
+          "variation": [
+            {
+              "title": "color",
+              "variants": ["blue", "black", "red"]
+            }
+          ],
+          "productPhoto": "headphone.jpg",
+          "gallery": [
+            "https://via.placeholder.com/600x400",
+            "https://via.placeholder.com/800x600",
+            "https://via.placeholder.com/1024x768"
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Headphone",
+          "description": "john@example.com",
+          "price": "120",
+          "category": "headphone",
+
+          "stock": 10,
+          "attributes": {
+            "color": "black"
+          },
+          "variation": [
+            {
+              "title": "color",
+              "variants": ["blue", "black", "red"]
+            }
+          ],
+          "productPhoto": "headphone.jpg",
+          "gallery": [
+            "https://via.placeholder.com/600x400",
+            "https://via.placeholder.com/800x600",
+            "https://via.placeholder.com/1024x768"
+          ]
+        },
+        {
+          "id": 4,
+          "title": "Headphone",
+          "description": "john@example.com",
+          "price": "120",
+          "category": "headphone",
+
+          "stock": 0,
+          "attributes": {
+            "color": "black"
+          },
+          "variation": [
+            {
+              "title": "color",
+              "variants": ["blue", "black", "red"]
+            }
+          ],
+          "productPhoto": "headphone.jpg",
+          "gallery": [
+            "https://via.placeholder.com/600x400",
+            "https://via.placeholder.com/800x600",
+            "https://via.placeholder.com/1024x768"
+          ]
+        },
+        {
+          "id": 5,
+          "title": "Headphone",
+          "description": "john@example.com",
+          "price": "120",
+          "category": "headphone",
+
+          "stock": 10,
+          "attributes": {
+            "color": "black"
+          },
+          "variation": [
+            {
+              "title": "color",
+              "variants": ["blue", "black", "red"]
+            }
+          ],
+          "productPhoto": "headphone.jpg",
+          "gallery": [
+            "https://via.placeholder.com/600x400",
+            "https://via.placeholder.com/800x600",
+            "https://via.placeholder.com/1024x768"
+          ]
+        }
+      ]
+    ]
+  }
+}

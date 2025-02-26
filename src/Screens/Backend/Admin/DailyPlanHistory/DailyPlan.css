@@ -1,0 +1,10 @@
+.score_circle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5rem;
+  background: white;
+
+  padding: 2rem;
+  border-radius: 2rem;
+}

@@ -1,0 +1,10 @@
+.subscription-plan-carousel-container {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+@media (max-width: 440px) {
+  .subscription-plan-carousel-container {
+    width: "100vw";
+  } /* Minimum: 0, Maximum: 440px */
+}

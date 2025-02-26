@@ -1,0 +1,19 @@
+.arrow {
+  position: absolute;
+  top: 30%;
+}
+
+.right {
+  right: 2.5%;
+  max-width: 20px;
+}
+
+.left {
+  left: 0;
+  max-width: 20px;
+}
+
+.react-multi-carousel-dot--active button {
+  background-color: yellow !important;
+  color: yellow;
+}
