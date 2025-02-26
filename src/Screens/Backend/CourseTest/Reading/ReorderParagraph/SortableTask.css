@@ -1,0 +1,7 @@
+.sort-task {
+  cursor: grab;
+}
+
+.sort-task:active {
+  cursor: grabbing;
+}

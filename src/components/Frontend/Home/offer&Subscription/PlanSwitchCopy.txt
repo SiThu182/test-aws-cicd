@@ -1,0 +1,481 @@
+<Box>
+            {subscriptionFrontendStatus === "succeeded" &&
+            subscriptionFrontend !== "" &&
+            subscriptionFrontend !== undefined ? (
+              <Carousel
+                swipeable={true}
+                draggable={true}
+                responsive={CardStyle.responsive}
+                ssr={true} //means to render carousel on server-side.
+                // autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                autoPlay={false}
+                autoPlaySpeed={3000}
+                keyBoardControl={true}
+                customTransition="all 1s ease"
+                transitionDuration={1000}
+                containerClass={props.containerClass}
+                removeArrowOnDeviceType={["desktop", "laptop"]}
+                // deviceType={this.props.deviceType}
+                dotListClass="custom-dot-list-style"
+                itemClass="carousel-item-padding-50-px"
+              >
+                {subscriptionFrontend.map((s, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      mb: 2,
+                      py: 2,
+
+                      // width: { sm: "100%", md: "30%", lg: "30%", xl: "30%" },
+                    }}
+                  >
+                    <Card
+                      sx={{
+                        ...CardStyle.cardStyle,
+                        "&.MuiPaper-root": {
+                          overflow: "visible",
+                        },
+                      }}
+                    >
+                      <CardHeader
+                        title={
+                          <Typography
+                            variant="h4"
+                            sx={{
+                              ...CardStyle.cardHeader,
+                              fontSize: {
+                                xs: "16px",
+                                sm: "17px",
+                                md: "1.6rem",
+                                lg: "1.6rem",
+                              },
+                              color: "white",
+                            }}
+                          >
+                            {currentLanguage === "en"
+                              ? s.name
+                              : s?.name_burmese}
+                          </Typography>
+                        }
+                        action={
+                          s?.discount_status !== 0 && (
+                            <>
+                              <Box
+                                sx={{
+                                  position: "absolute",
+                                  top: "-20%",
+                                  right: "-10%",
+                                  background: "white",
+                                  borderRadius: "2rem",
+                                  m: 0,
+                                  p: 1,
+                                  color: "red",
+                                  border: "1px solid grey",
+                                  boxShadow: 5,
+                                  fontWeight: 800,
+                                }}
+                              >
+                                <Typography variant="h5">
+                                  {s.discount_percent}% Off
+                                </Typography>
+                              </Box>
+                            </>
+                          )
+                        }
+                        sx={{
+                          ...CardStyle.planCardHeader,
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "flex-start",
+                        }}
+                      />
+
+                      <CardContent
+                        sx={{
+                          height: "auto",
+                        }}
+                      >
+                        {/* 100$ / 1month */}
+                        {s?.discount_status === 1 ? (
+                          <>
+                            <Typography
+                              variant="h5"
+                              component="h5"
+                              sx={{ ...CardStyle.costStyle }}
+                            >
+                              <span style={{ textDecoration: "line-through" }}>
+                                {s.show_fees}{" "}
+                                {/* {country !== "MMK"
+                                  ? country === "USD"
+                                    ? " USD"
+                                    : " AUD"
+                                  : " MMK"} */}
+                                {country}
+                              </span>
+                              <br />
+                              {(
+                                s.show_fees -
+                                (s.show_fees * s.discount_percent) / 100
+                              ).toFixed(2)}{" "}
+                              {country}
+                            </Typography>
+                          </>
+                        ) : (
+                          <Typography
+                            variant="h5"
+                            component="h5"
+                            sx={{
+                              ...CardStyle.costStyle,
+                              marginBottom: "1rem",
+                            }}
+                          >
+                            {s.show_fees} {country}
+                          </Typography>
+                        )}
+                        {s.plan_type_id === 1 && (
+                          <>
+                            <TextLine>
+                              {s.limited_status === 1 ? (
+                                <span style={{ color: "red" }}>
+                                  Unlimited practice for {s.number_of_day} days
+                                </span>
+                              ) : (
+                                <span style={{ color: "red" }}>
+                                  limited with {s.scoring_count}scoring count
+                                </span>
+                              )}
+                            </TextLine>
+                            <TextLine>
+                              AI Scoring System based on{" "}
+                              <span style={{ color: "red" }}> real-world </span>
+                              test questions
+                            </TextLine>
+                            {/* <TextLine>Practice Resource</TextLine> */}
+                            <TextLine>
+                              Up-to-date weekly prediction file
+                            </TextLine>
+                            <TextLine>
+                              24-hour live chat access during office hourse
+                            </TextLine>
+
+                            {JSON.parse(s.description).map((d, index) => (
+                              <TextLine key={index}>{d}</TextLine>
+                            ))}
+                          </>
+                        )}
+                        {s.plan_type_id === 2 && (
+                          <>
+                            <TextLine>
+                              {s.mt_limited_status === 1 ? (
+                                <>
+                                  Unlimited scored mocktest for
+                                  <span
+                                    style={{ color: "red", fontWeight: "bold" }}
+                                  >
+                                    {" "}
+                                    {s.mt_number_of_day} days
+                                  </span>{" "}
+                                </>
+                              ) : (
+                                <span>
+                                  {s.mocktest_count} Ai Scoring Mock test based
+                                  on
+                                  <span style={{ color: "red" }}>
+                                    {" "}
+                                    real-world{" "}
+                                  </span>
+                                  test questions
+                                </span>
+                              )}
+
+                              {/* {s.mocktest_count} Ai Scoring Mock test based on
+                              <span style={{ color: "red" }}> real-world </span>
+                              test questions */}
+                            </TextLine>
+                            {/* <TextLine>
+                              {s.mocktest_count} Ai Scoring Mock test based on
+                              <span style={{ color: "red" }}> real-world </span>
+                              test questions
+                            </TextLine> */}
+                            {/* <TextLine>Daily study plan timetable</TextLine> */}
+                            <TextLine>Daily study plan timetable</TextLine>
+                            <TextLine>
+                              Up-to-date weekly prediction file
+                            </TextLine>
+                            <TextLine>
+                              24-hour live chat access during office hourse
+                            </TextLine>
+
+                            <TextLine>Access to mock test score cards</TextLine>
+                            {/* Score Card within taken days */}
+                            {/* <TextLine>Score Card within taken days</TextLine> */}
+                            {typeof s.description === "string" &&
+                            s.description.includes("[") ? (
+                              JSON.parse(s.description).map((d, index) => (
+                                <TextLine key={index}>{d}</TextLine>
+                              ))
+                            ) : (
+                              <TextLine>{s.description}</TextLine>
+                            )}
+                          </>
+                        )}
+                        {s.plan_type_id === 5 && (
+                          <>
+                            <TextLine>
+                              {s.limited_status === 1 ? (
+                                <>
+                                  Unlimited practice for
+                                  <span
+                                    style={{ color: "red", fontWeight: "bold" }}
+                                  >
+                                    {" "}
+                                    {s.number_of_day} days
+                                  </span>{" "}
+                                </>
+                              ) : (
+                                <span style={{ color: "red" }}>
+                                  limited with {s.scoring_count} scoring count
+                                </span>
+                              )}
+                            </TextLine>
+
+                            <TextLine>
+                              {s.mt_limited_status === 1 ? (
+                                <>
+                                  Unlimited scored mocktest for
+                                  <span
+                                    style={{ color: "red", fontWeight: "bold" }}
+                                  >
+                                    {" "}
+                                    {s.mt_number_of_day} days
+                                  </span>{" "}
+                                </>
+                              ) : (
+                                <span>
+                                  {s.mocktest_count} Ai Scoring Mock test based
+                                  on
+                                  <span style={{ color: "red" }}>
+                                    {" "}
+                                    real-world{" "}
+                                  </span>
+                                  test questions
+                                </span>
+                              )}
+
+                              {/* {s.mocktest_count} Ai Scoring Mock test based on
+                              <span style={{ color: "red" }}> real-world </span>
+                              test questions */}
+                            </TextLine>
+                            {/* <TextLine>Practice Resource</TextLine> */}
+                            <TextLine>Daily study plan timetable</TextLine>
+
+                            <TextLine>
+                              Up-to-date weekly prediction file
+                            </TextLine>
+                            <TextLine>
+                              24-hour live chat access during office hourse
+                            </TextLine>
+
+                            <TextLine>Access to mock test score cards</TextLine>
+                            {/* Score Card within taken days */}
+                            {/* <TextLine>Score Card within taken days</TextLine> */}
+                            {typeof s.description === "string" &&
+                            s.description.includes("[") ? (
+                              JSON.parse(s.description).map((d, index) => (
+                                <TextLine key={index}>{d}</TextLine>
+                              ))
+                            ) : (
+                              <TextLine>{s.description}</TextLine>
+                            )}
+                          </>
+                        )}
+                        {s.plan_type_id === 4 && (
+                          <>
+                            <TextLine>
+                              {JSON.parse(s.language_type_id).map(
+                                (l, index) => (
+                                  <span key={index}>
+                                    {" "}
+                                    {l === 1
+                                      ? "Speaking Mock Test +" +
+                                        JSON.parse(s.sectional_mocktest_count)[
+                                          index
+                                        ]
+                                      : l === 2
+                                      ? "Reading Mock Test +" +
+                                        JSON.parse(s.sectional_mocktest_count)[
+                                          index
+                                        ]
+                                      : l === 4
+                                      ? "Writing Mock Test +" +
+                                        JSON.parse(s.sectional_mocktest_count)[
+                                          index
+                                        ]
+                                      : l === 3
+                                      ? "Listeninng MockTest +" +
+                                        JSON.parse(s.sectional_mocktest_count)[
+                                          index
+                                        ]
+                                      : ""}
+                                  </span>
+                                )
+                              )}
+                            </TextLine>
+                            {/* <TextLine>Practice Resource</TextLine> */}
+                            <TextLine>Daily study plan timetable</TextLine>
+                            <TextLine>
+                              Up-to-date weekly prediction file
+                            </TextLine>
+                            <TextLine>
+                              24-hour live chat access during office hourse
+                            </TextLine>
+
+                            <TextLine>Access to mock test score cards</TextLine>
+                            {/* Score Card within taken days */}
+                            {/* <TextLine>Score Card within taken days</TextLine> */}
+                            {typeof s.description === "string" &&
+                            s.description.includes("[") ? (
+                              JSON.parse(s.description).map((d, index) => (
+                                <TextLine key={index}>{d}</TextLine>
+                              ))
+                            ) : (
+                              <TextLine>{s.description}</TextLine>
+                            )}
+                          </>
+                        )}
+                        {s.plan_type_id === 8 && (
+                          <>
+                            <TextLine>
+                              {s.limited_status === 1 ? (
+                                <>
+                                  <span style={{ color: "red" }}>
+                                    Unlimited practice for
+                                  </span>
+                                  {s.number_of_day} days
+                                </>
+                              ) : (
+                                <span style={{ color: "red" }}>
+                                  limited practice with {s.scoring_count}{" "}
+                                  scoring count
+                                </span>
+                              )}{" "}
+                            </TextLine>
+
+                            <TextLine>
+                              {s.mt_limited_status === 1 ? (
+                                <>
+                                  Unlimited scored mocktest for
+                                  <span
+                                    style={{ color: "red", fontWeight: "bold" }}
+                                  >
+                                    {" "}
+                                    {s.mt_number_of_day} days
+                                  </span>{" "}
+                                </>
+                              ) : (
+                                <span style={{ color: "red" }}>
+                                  {s.mocktest_count} Ai Scoring Mock test based
+                                  on
+                                  <span style={{ color: "red" }}>
+                                    {" "}
+                                    real-world{" "}
+                                  </span>
+                                  test questions
+                                </span>
+                              )}
+
+                              {/* {s.mocktest_count} Ai Scoring Mock test based on
+                              <span style={{ color: "red" }}> real-world </span>
+                              test questions */}
+                            </TextLine>
+                            {/* <TextLine>
+                              {s.mocktest_count} Ai Scoring Mock test based on
+                              <span style={{ color: "red" }}> real-world </span>
+                              test questions
+                            </TextLine> */}
+                            <TextLine>
+                              {JSON.parse(s.language_type_id).map(
+                                (l, index) => (
+                                  <span key={index}>
+                                    {" "}
+                                    {l === 1
+                                      ? "Speaking Mock Test +" +
+                                        JSON.parse(s.sectional_mocktest_count)[
+                                          index
+                                        ]
+                                      : l === 2
+                                      ? "Reading Mock Test +" +
+                                        JSON.parse(s.sectional_mocktest_count)[
+                                          index
+                                        ]
+                                      : l === 4
+                                      ? "Writing Mock Test +" +
+                                        JSON.parse(s.sectional_mocktest_count)[
+                                          index
+                                        ]
+                                      : l === 3
+                                      ? "Listeninng MockTest +" +
+                                        JSON.parse(s.sectional_mocktest_count)[
+                                          index
+                                        ]
+                                      : ""}{" "}
+                                    {index !==
+                                    JSON.parse(s.language_type_id).length - 1
+                                      ? "|"
+                                      : ""}
+                                  </span>
+                                )
+                              )}
+                            </TextLine>
+                            {/* <TextLine>Practice Resource</TextLine> */}
+                            <TextLine>Daily study plan timetable</TextLine>
+                            <TextLine>
+                              Up-to-date weekly prediction file
+                            </TextLine>
+                            <TextLine>
+                              24-hour live chat access during office hourse
+                            </TextLine>
+
+                            <TextLine>
+                              Access to mock test score cards{" "}
+                            </TextLine>
+                            {/* Score Card within taken days */}
+                            {typeof s.description === "string" &&
+                            s.description.includes("[") ? (
+                              JSON.parse(s.description).map((d, index) => (
+                                <TextLine key={index}>{d}</TextLine>
+                              ))
+                            ) : (
+                              <TextLine>{s.description}</TextLine>
+                            )}
+                          </>
+                        )}
+                      </CardContent>
+                      <Button
+                        variant="outlined"
+                        sx={{ ...CardStyle.subscribeBtn }}
+                        onClick={() => clickBuyHandler(s)}
+                      >
+                        SUBSCRIBE
+                      </Button>
+                    </Card>
+                  </Box>
+                ))}
+              </Carousel>
+            ) : (
+              <Box sx={{ display: "flex", width: "100%", height: "80vh" }}>
+                <CircularProgress sx={{ m: "auto" }}></CircularProgress>
+              </Box>
+            )}
+            {subscriptionFrontendStatus === "failed" && (
+              <Typography textAlign="center">
+                Failed .Please check your network & try reload
+              </Typography>
+            )}
+            {subscriptionFrontendStatus === "succeeded" &&
+              subscriptionFrontend.length === 0 && (
+                <Typography textAlign="center" sx={{ height: "20vh" }}>
+                  No subscription added yet
+                </Typography>
+              )}
+          </Box>

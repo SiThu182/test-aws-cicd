@@ -1,0 +1,19 @@
+{
+  "aiScoring": "Ai scoring",
+  "aiScoringDescription": "Ai scoring for PTE Speaking section",
+  "latestQuestion": "Latest Questions",
+  "latestQuestionDescription": "Up to date exam questions for all PTE sections",
+  "class": "Course",
+  "classDescription": "Register various courses for PTE with excellent instructors",
+  "mt": "Full Mock Test",
+  "mtDescription": "Mock Test similar to authentic pearson exam with detailed analytic and score results",
+  "smt": "Sectional Mock Test",
+  "practice": "Free practice all sections except speaking .Every account get 5 free token for speaking",
+  "smtDescription": "Sectional Test for each sections with detailed analytic and score results",
+  "check": "Score Checks",
+  "checkDescription": "Score Check to know how the PTE marks are distributed across various sections",
+  "predict": "Latest Prediction File",
+  "predictDescription": "Latest version of prediction file will be available every month",
+  "blog": "Blog",
+  "blogDescription": "Blog cocerning PTE and related educational tips and latest changes"
+}

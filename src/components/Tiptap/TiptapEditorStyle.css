@@ -1,0 +1,12 @@
+.ProseMirror {
+  height: 100%; /* Ensures the input area takes the full height */
+
+  align-items: center; /* Vertically centers the text */
+  font-size: 16px; /* Adjust the font size as needed */
+  line-height: normal; /* Ensure the text height matches the font size */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  border: none; /* Optional: removes the border if needed */
+  outline: none; /* Remove the default outline on focus */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's width and height */
+}

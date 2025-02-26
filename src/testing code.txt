@@ -1,0 +1,1130 @@
+{
+  /* Options */
+}
+{
+  option === true && (
+    <>
+      <Box sx={{ display: "flex" }}>
+        {/*  radio section */}
+        {mc !== true && (
+          <>
+            <Box sx={{ height: "100%" }}>
+              <Controller
+                control={control}
+                name="radioTest"
+                rules={{
+                  required: {
+                    value: true,
+                    message: "*Needs to select one correct answer",
+                  },
+                }}
+                defaultValue={props.edit === "edit" ? editValue : ""}
+                render={({ field: { onChange } }) => (
+                  <RadioGroup
+                    // value={value}
+                    defaultValue={props.edit === "edit" ? editValue : ""}
+                    onChange={(e) => onChange(e.target.value)}
+                    sx={{}}
+                  >
+                    <Radio
+                      value="0"
+                      sx={{ mt: "2rem", width: "100%", height: "20%" }}
+                    >
+                      1
+                    </Radio>
+                    <Radio
+                      value="1"
+                      sx={{ mt: "1rem", width: "100%", height: "20%" }}
+                    >
+                      2
+                    </Radio>
+                    <Radio
+                      value="2"
+                      sx={{ mt: "1.2rem", width: "100%", height: "20%" }}
+                    >
+                      3
+                    </Radio>
+                    {countAns >= 4 && (
+                      <Radio
+                        value="3"
+                        sx={{
+                          mt: "1.5rem",
+                          width: "100%",
+                          height: "20%",
+                        }}
+                      >
+                        4
+                      </Radio>
+                    )}
+                    {countAns >= 5 && (
+                      <Radio
+                        value="4"
+                        sx={{
+                          mt: "1.5rem",
+                          width: "100%",
+                          height: "20%",
+                        }}
+                      ></Radio>
+                    )}
+                    {countAns >= 6 && (
+                      <Radio
+                        value="5"
+                        sx={{
+                          mt: "1.5rem",
+                          width: "100%",
+                          height: "20%",
+                        }}
+                      ></Radio>
+                    )}
+                    {countAns >= 7 && (
+                      <Radio
+                        value="6"
+                        sx={{
+                          mt: "1.4rem",
+                          width: "100%",
+                          height: "20%",
+                        }}
+                      ></Radio>
+                    )}
+                  </RadioGroup>
+                )}
+              />
+            </Box>
+          </>
+        )}
+
+        <Box sx={{ width: "100%" }}>
+          {/* one */}
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            {mc === true && (
+              <Box>
+                <Controller
+                  name="check1"
+                  control={control}
+                  defaultValue={
+                    props.editChoice !== undefined
+                      ? props.editChoice[0].isCorrect === 1
+                        ? true
+                        : false
+                      : false
+                  }
+                  render={({ field: { value, onChange } }) => (
+                    <Checkbox
+                      checked={value}
+                      onChange={onChange}
+                      sx={{ mt: 3 }}
+                    />
+                  )}
+                ></Controller>
+              </Box>
+            )}
+            <Box sx={{ width: "100%" }}>
+              <Controller
+                name="choice1"
+                control={control}
+                defaultValue={
+                  props.editChoice !== undefined
+                    ? props.editChoice[0] !== undefined
+                      ? props.editChoice[0].name
+                      : ""
+                    : ""
+                } //insert props.content
+                rules={{
+                  required: {
+                    value: true,
+                    message: "*Choice is required",
+                  },
+                }}
+                render={({ field: { ref, ...field } }) => (
+                  <TextField
+                    {...field}
+                    inputRef={ref}
+                    id="choice1"
+                    type="text"
+                    variant="standard"
+                    fullWidth
+                    size="large"
+                    error={!!errors.choice1}
+                    label={<Typography variant="h5">Answer one</Typography>}
+                    sx={{ bgcolor: "rgb(231 239 254)", mt: "1rem" }}
+                  />
+                )}
+              />
+            </Box>
+            {errors.choice1 && (
+              <Box
+                sx={{
+                  width: {
+                    md: "20%",
+                    sm: "40%",
+                    xs: "100%",
+                  },
+                }}
+              >
+                <Typography variant="p" color="red" textAlign={"left"}>
+                  {errors.choice1.message}
+                </Typography>
+              </Box>
+            )}
+          </Box>
+
+          {/* one */}
+          {/* two */}
+          <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
+            {mc === true && (
+              <Box>
+                <Controller
+                  name="check2"
+                  control={control}
+                  defaultValue={
+                    props.editChoice !== undefined
+                      ? props.editChoice[1].isCorrect === 1
+                        ? true
+                        : false
+                      : false
+                  }
+                  render={({ field: { value, onChange } }) => (
+                    <Checkbox
+                      checked={value}
+                      onChange={onChange}
+                      sx={{ mt: 3 }}
+                    />
+                  )}
+                ></Controller>
+              </Box>
+            )}
+            <Box sx={{ width: "100%" }}>
+              <Controller
+                name="choice2"
+                control={control}
+                defaultValue={
+                  props.editChoice !== undefined
+                    ? props.editChoice[1] !== undefined
+                      ? props.editChoice[1].name
+                      : ""
+                    : ""
+                } //insert props.content
+                rules={{
+                  required: {
+                    value: true,
+                    message: "*Choice is required",
+                  },
+                }}
+                render={({ field: { ref, ...field } }) => (
+                  <TextField
+                    {...field}
+                    inputRef={ref}
+                    id="choice2"
+                    type="text"
+                    variant="standard"
+                    error={!!errors.choice2}
+                    label={<Typography variant="h5">Answer Two</Typography>}
+                    sx={{ bgcolor: "rgb(231 239 254)", mt: "1rem" }}
+                    style={{ width: "100%" }}
+                  />
+                )}
+              />
+            </Box>
+            {errors.choice2 && (
+              <Box
+                sx={{
+                  width: {
+                    md: "20%",
+                    sm: "40%",
+                    xs: "100%",
+                  },
+                }}
+              >
+                <Typography variant="p" color="red" textAlign={"left"}>
+                  {errors.choice2.message}
+                </Typography>
+              </Box>
+            )}
+          </Box>
+
+          {/* two */}
+          {/* three */}
+
+          <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
+            {mc === true && (
+              <Box>
+                <Controller
+                  name="check3"
+                  control={control}
+                  defaultValue={
+                    props.editChoice !== undefined
+                      ? props.editChoice[2].isCorrect === 1
+                        ? true
+                        : false
+                      : false
+                  }
+                  render={({ field: { value, onChange } }) => (
+                    <Checkbox
+                      checked={value}
+                      onChange={onChange}
+                      sx={{ mt: 3 }}
+                    />
+                  )}
+                ></Controller>
+              </Box>
+            )}
+            <Box sx={{ width: "100%" }}>
+              <Controller
+                name="choice3"
+                control={control}
+                defaultValue={
+                  props.editChoice !== undefined
+                    ? props.editChoice[2] !== undefined
+                      ? props.editChoice[2].name
+                      : ""
+                    : ""
+                } //insert props.content
+                rules={{
+                  required: {
+                    value: true,
+                    message: "*Choice is required",
+                  },
+                }}
+                render={({ field: { ref, ...field } }) => (
+                  <TextField
+                    {...field}
+                    inputRef={ref}
+                    id="choice3"
+                    type="text"
+                    variant="standard"
+                    error={!!errors.choice3}
+                    label={<Typography variant="h5">Answer Three</Typography>}
+                    sx={{ bgcolor: "rgb(231 239 254)", mt: "1rem" }}
+                    style={{ width: "100%" }}
+                  />
+                )}
+              />
+            </Box>
+            {errors.choice3 && (
+              <Box
+                sx={{
+                  width: {
+                    md: "20%",
+                    sm: "40%",
+                    xs: "100%",
+                  },
+                }}
+              >
+                <Typography variant="p" color="red" textAlign={"left"}>
+                  {errors.choice3.message}
+                </Typography>
+              </Box>
+            )}
+          </Box>
+
+          {/* three */}
+          {/* four */}
+          {countAns >= 4 && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              {mc === true && (
+                <Box>
+                  <Controller
+                    name="check4"
+                    control={control}
+                    defaultValue={
+                      props.editChoice !== undefined
+                        ? props.editChoice[4] !== undefined
+                          ? props.editChoice[4].isCorrect === 1
+                            ? true
+                            : false
+                          : false
+                        : false
+                    }
+                    render={({ field: { value, onChange } }) => (
+                      <Checkbox
+                        checked={value}
+                        onChange={onChange}
+                        sx={{ mt: 3 }}
+                      />
+                    )}
+                  ></Controller>
+                </Box>
+              )}
+              <Box sx={{ width: "100%" }}>
+                <Controller
+                  name="choice4"
+                  control={control}
+                  defaultValue={
+                    props.editChoice !== undefined
+                      ? props.editChoice[3] !== undefined
+                        ? props.editChoice[3].name
+                        : ""
+                      : ""
+                  } //insert props.content
+                  rules={{
+                    required: {
+                      value: true,
+                      message: "*Choice is required",
+                    },
+                  }}
+                  render={({ field: { ref, ...field } }) => (
+                    <TextField
+                      {...field}
+                      inputRef={ref}
+                      id="choice4"
+                      type="text"
+                      variant="standard"
+                      error={!!errors.choice4}
+                      label={<Typography variant="h5">Answer four</Typography>}
+                      sx={{ bgcolor: "rgb(231 239 254)", mt: "1rem" }}
+                      style={{ width: "100%" }}
+                    />
+                  )}
+                />
+              </Box>
+              {errors.choice4 && (
+                <Box
+                  sx={{
+                    width: {
+                      md: "20%",
+                      sm: "40%",
+                      xs: "100%",
+                    },
+                  }}
+                >
+                  <Typography variant="p" color="red" textAlign={"left"}>
+                    {errors.choice4.message}
+                  </Typography>
+                </Box>
+              )}
+            </Box>
+          )}
+
+          {/* four */}
+          {/* five */}
+          {countAns >= 5 && (
+            <>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                {mc === true && (
+                  <Box>
+                    <Controller
+                      name="check5"
+                      control={control}
+                      defaultValue={
+                        props.editChoice !== undefined
+                          ? props.editChoice[4] !== undefined
+                            ? props.editChoice[4].isCorrect === 1
+                              ? true
+                              : false
+                            : false
+                          : false
+                      }
+                      render={({ field: { value, onChange } }) => (
+                        <Checkbox
+                          checked={value}
+                          onChange={onChange}
+                          sx={{ mt: 3 }}
+                        />
+                      )}
+                    ></Controller>
+                  </Box>
+                )}
+
+                <Box sx={{ width: "100%" }}>
+                  <Controller
+                    name="choice5"
+                    control={control}
+                    defaultValue={
+                      props.editChoice !== undefined
+                        ? props.editChoice[4] !== undefined
+                          ? props.editChoice[4].name
+                          : ""
+                        : ""
+                    } //insert props.content
+                    rules={{
+                      required: {
+                        value: true,
+                        message: "*Choice is required",
+                      },
+                    }}
+                    render={({ field: { ref, ...field } }) => (
+                      <TextField
+                        {...field}
+                        inputRef={ref}
+                        id="choice4"
+                        type="text"
+                        variant="standard"
+                        error={!!errors.choice5}
+                        label={
+                          <Typography variant="h5">Answer Five</Typography>
+                        }
+                        sx={{
+                          backgroundColor: "rgb(231 239 254)",
+                          mt: "1rem",
+                        }}
+                        style={{ width: "100%" }}
+                      />
+                    )}
+                  />
+                </Box>
+                {errors.choice5 && (
+                  <Box
+                    sx={{
+                      width: {
+                        md: "20%",
+                        sm: "40%",
+                        xs: "100%",
+                      },
+                    }}
+                  >
+                    <Typography variant="p" color="red" textAlign={"left"}>
+                      {errors.choice5.message}
+                    </Typography>
+                  </Box>
+                )}
+              </Box>
+            </>
+          )}
+          {/* five */}
+          {/* six */}
+          {countAns >= 6 && (
+            <>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                {mc === true && (
+                  <Box>
+                    <Controller
+                      name="check6"
+                      control={control}
+                      defaultValue={
+                        props.editChoice !== undefined
+                          ? props.editChoice[5] !== undefined
+                            ? props.editChoice[5].isCorrect === 1
+                              ? true
+                              : false
+                            : false
+                          : false
+                      }
+                      render={({ field: { value, onChange } }) => (
+                        <Checkbox
+                          checked={value}
+                          onChange={onChange}
+                          sx={{ mt: 3 }}
+                        />
+                      )}
+                    ></Controller>
+                  </Box>
+                )}
+
+                <Box sx={{ width: "100%" }}>
+                  <Controller
+                    name="choice6"
+                    control={control}
+                    defaultValue={
+                      props.editChoice !== undefined
+                        ? props.editChoice[5] !== undefined
+                          ? props.editChoice[5].name
+                          : ""
+                        : ""
+                    } //insert props.content
+                    rules={{
+                      required: {
+                        value: true,
+                        message: "*Choice is required",
+                      },
+                    }}
+                    render={({ field: { ref, ...field } }) => (
+                      <TextField
+                        {...field}
+                        inputRef={ref}
+                        id="choice6"
+                        type="text"
+                        variant="standard"
+                        error={!!errors.choice6}
+                        label={<Typography variant="h5">Answer Six</Typography>}
+                        sx={{
+                          backgroundColor: "rgb(231 239 254)",
+                          mt: "1rem",
+                        }}
+                        style={{ width: "100%" }}
+                      />
+                    )}
+                  />
+                </Box>
+                {errors.choice6 && (
+                  <Box
+                    sx={{
+                      width: {
+                        md: "20%",
+                        sm: "40%",
+                        xs: "100%",
+                      },
+                    }}
+                  >
+                    <Typography variant="p" color="red" textAlign={"left"}>
+                      {errors.choice6.message}
+                    </Typography>
+                  </Box>
+                )}
+              </Box>
+            </>
+          )}
+          {/* six */}
+          {/* seven */}
+          {countAns >= 7 && (
+            <>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                {mc === true && (
+                  <Box>
+                    <Controller
+                      name="check7"
+                      control={control}
+                      defaultValue={
+                        props.editChoice !== undefined
+                          ? props.editChoice[6] !== undefined
+                            ? props.editChoice[6].isCorrect === 1
+                              ? true
+                              : false
+                            : false
+                          : false
+                      }
+                      render={({ field: { value, onChange } }) => (
+                        <Checkbox
+                          checked={value}
+                          onChange={onChange}
+                          sx={{ mt: 3 }}
+                        />
+                      )}
+                    ></Controller>
+                  </Box>
+                )}
+
+                <Box sx={{ width: "100%" }}>
+                  <Controller
+                    name="choice7"
+                    control={control}
+                    defaultValue={
+                      props.editChoice !== undefined
+                        ? props.editChoice[6] !== undefined
+                          ? props.editChoice[6].name
+                          : ""
+                        : ""
+                    } //insert props.content
+                    rules={{
+                      required: {
+                        value: true,
+                        message: "*Choice is required",
+                      },
+                    }}
+                    render={({ field: { ref, ...field } }) => (
+                      <TextField
+                        {...field}
+                        inputRef={ref}
+                        id="choice4"
+                        type="text"
+                        variant="standard"
+                        error={!!errors.choice7}
+                        label={
+                          <Typography variant="h5">Answer Seven</Typography>
+                        }
+                        sx={{
+                          backgroundColor: "rgb(231 239 254)",
+                          mt: "1rem",
+                        }}
+                        style={{ width: "100%" }}
+                      />
+                    )}
+                  />
+                </Box>
+                {errors.choice7 && (
+                  <Box
+                    sx={{
+                      width: {
+                        md: "20%",
+                        sm: "40%",
+                        xs: "100%",
+                      },
+                    }}
+                  >
+                    <Typography variant="p" color="red" textAlign={"left"}>
+                      {errors.choice7.message}
+                    </Typography>
+                  </Box>
+                )}
+              </Box>
+
+              {/* seven */}
+            </>
+          )}
+          <br />
+          {errors.radioTest && (
+            <Typography variant="p" color="red" textAlign={"left"}>
+              {errors.radioTest.message}
+            </Typography>
+          )}
+        </Box>
+      </Box>
+      {!smc && (
+        <Box sx={{ display: "flex", my: 2 }}>
+          <Button
+            variant="contained"
+            onClick={add}
+            sx={{ mr: 3 }}
+            disabled={countAns >= 7 ? true : false}
+          >
+            ADD
+          </Button>
+          <Button
+            variant="contained"
+            onClick={remove}
+            disabled={
+              mc ? (countAns <= 4 ? true : false) : countAns <= 3 ? true : false
+            }
+          >
+            Remove
+          </Button>
+        </Box>
+      )}
+    </>
+  );
+}
+
+  function getLocalStream() {
+      navigator.mediaDevices
+        .getUserMedia({ video: false, audio: true })
+        .then((stream) => {
+          window.localStream = stream; // A
+          window.localAudio.srcObject = stream; // B
+          window.localAudio.autoplay = true; // C
+        })
+        .catch((err) => {
+          console.error(`you got an error: ${err}`);
+        });
+    }
+
+    getLocalStream()
+
+       <Grid
+            container
+            direction={{
+              md: "row",
+              sm: "column",
+              xs: "column",
+            }}
+            spacing={1}
+            //
+            width={1}
+            marginTop={5}
+            sx={{ ...cardGrid }}
+          >
+            {/* subscription card details start */}
+            <Grid item lg={2}></Grid>
+            <Grid item xs={4} lg={3}>
+              <Card sx={{ ...cardStyle }}>
+                <CardHeader
+                  title="PREMIUM 1"
+                  titleTypographyProps={{ variant: "h4" }}
+                  sx={{ ...cardHeader }}
+                />
+                <CardContent>
+                  <Typography variant="h5" component="h5" sx={{ ...costStyle }}>
+                    100$ / 1mo
+                  </Typography>
+                  <List
+                    sx={{
+                      listStyleType: "disc",
+
+                      pl: 3,
+
+                      "& .MuiListItem-root": {
+                        display: "list-item",
+                      },
+                      "& .MuiListItem-root::marker": {
+                        color: "red",
+                      },
+                    }}
+                  >
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Real exam questions, regular update
+                    </ListItem>
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Real audio, regular update
+                    </ListItem>
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Advanced recommended solutions
+                    </ListItem>
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Premium user only features
+                    </ListItem>
+                  </List>
+                  <Button variant="outlined" sx={{ ...subscribeBtn }}>
+                    SUBSCRIBE
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={4} lg={3}>
+              <Card sx={{ ...cardStyle }}>
+                <CardHeader
+                  title="PREMIUM 2"
+                  titleTypographyProps={{ variant: "h4" }}
+                  sx={{ ...cardHeader }}
+                />
+                <CardContent>
+                  <Typography variant="h5" component="h5" sx={{ ...costStyle }}>
+                    250$ / 3mo
+                  </Typography>
+                  <List
+                    sx={{
+                      listStyleType: "disc",
+
+                      pl: 3,
+
+                      "& .MuiListItem-root": {
+                        display: "list-item",
+                      },
+                      "& .MuiListItem-root::marker": {
+                        color: "red",
+                      },
+                    }}
+                  >
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Real exam questions, regular update
+                    </ListItem>
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Real audio, regular update
+                    </ListItem>
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Advanced recommended solutions
+                    </ListItem>
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Premium user only features
+                    </ListItem>
+                  </List>
+                  <Button variant="outlined" sx={{ ...subscribeBtn }}>
+                    SUBSCRIBE
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={4} lg={3}>
+              <Card sx={{ ...cardStyle }}>
+                <CardHeader
+                  title="PREMIUM 3"
+                  titleTypographyProps={{ variant: "h4" }}
+                  sx={{ ...cardHeader }}
+                />
+                <CardContent>
+                  <Typography variant="h5" component="h5" sx={{ ...costStyle }}>
+                    500$ / 1mo
+                  </Typography>
+                  <List
+                    sx={{
+                      listStyleType: "disc",
+
+                      pl: 3,
+
+                      "& .MuiListItem-root": {
+                        display: "list-item",
+                      },
+                      "& .MuiListItem-root::marker": {
+                        color: "red",
+                      },
+                    }}
+                  >
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Real exam questions, regular update
+                    </ListItem>
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Real audio, regular update
+                    </ListItem>
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Advanced recommended solutions
+                    </ListItem>
+                    <ListItem sx={{ ...listItemStyle }}>
+                      Premium user only features
+                    </ListItem>
+                  </List>
+                  <Button variant="outlined" sx={{ ...subscribeBtn }}>
+                    SUBSCRIBE
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item lg={2}></Grid>
+            {/* subscription card details end */}
+          </Grid>
+
+            const cardGrid = {
+    // p: {
+    //   md: 1,
+    //   sm: 1,
+    //   xs: 0,
+    // },
+    transition: "1s ease",
+  };
+
+
+  {/* footerGrid */}
+        <Grid
+          container
+          sx={{ ...footerGrid }}
+          direction={{
+            md: "row",
+            sm: "column",
+            xs: "column",
+          }}
+          // spacing={1}
+          width={1}
+        >
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            sx={{
+              margin: {
+                xs: "0 auto",
+                sm: "0 auto",
+              },
+            }}
+            md={4}
+          >
+            <Typography variant="h3" component="h3" sx={{ ...footerTitle }}>
+              iSmart PTE Ai
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                ...titleLine,
+              }}
+            ></Typography>
+            <List disablePadding sx={{ ...listFont }}>
+              <ListItem>
+                <NavLink
+                  href="#"
+                  style={{ textDecoration: "none", ...listFont }}
+                >
+                  About us
+                </NavLink>
+              </ListItem>
+              <ListItem>
+                128 Mitchell St Larrakeyah,
+                <br /> Darwin City,NT,Australia
+              </ListItem>
+              <ListItem>
+                <NavLink href="#" style={{ ...listFont }}>
+                  info@smartedumm.com
+                </NavLink>
+              </ListItem>
+              <ListItem>
+                <NavLink href="#" style={{ ...listFont }}>
+                  www.smartedumm.com
+                </NavLink>
+              </ListItem>
+              <ListItem>+61 451 924 288</ListItem>
+            </List>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            sx={{
+              margin: {
+                xs: "0 auto",
+                sm: "0 auto",
+              },
+              textAlign: {
+                sm: "left",
+              },
+            }}
+            md={4}
+          >
+            <Typography
+              variant="h3"
+              component="h3"
+              sx={{
+                ...footerTitle,
+                pl: {
+                  xs: 0,
+                  sm: 0,
+                },
+              }}
+            >
+              PTE Resources
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                ...titleLine,
+                ml: {
+                  xs: 0,
+                  sm: 0,
+                },
+              }}
+            ></Typography>
+            <List disablePadding sx={{ ...listFont, m: 0, p: 0 }}>
+              <ListItem disableGutters={true}>PTE Mock Test</ListItem>
+              <ListItem disableGutters={true}>PTE Speaking</ListItem>
+              <ListItem disableGutters={true}>PTE Writing</ListItem>
+              <ListItem disableGutters={true}>PTE Reading</ListItem>
+              <ListItem disableGutters={true}>PTE Listening</ListItem>
+              <ListItem disableGutters={true}>Blog</ListItem>
+            </List>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            sx={{
+              margin: {
+                xs: "0 auto",
+                sm: "0 auto",
+              },
+            }}
+            md={4}
+          >
+            <Typography
+              variant="h3"
+              component="h3"
+              sx={{
+                ...footerTitle,
+                pl: {
+                  xs: 0,
+                  sm: 0,
+                },
+                textAlign: {
+                  sm: "left",
+                },
+              }}
+            >
+              Follow Us
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                ...titleLine,
+                ml: {
+                  xs: 0,
+                  sm: 0,
+                },
+              }}
+            ></Typography>
+            <List
+              disablePadding
+              sx={{
+                ...listFont,
+                display: "flex",
+                justifyContent: "flex-start",
+                width: "50%",
+              }}
+            >
+              <ListItem disableGutters={true}>
+                <FacebookRoundedIcon sx={{ ...listIcon }}></FacebookRoundedIcon>
+              </ListItem>
+              <ListItem disableGutters={true}>
+                <SmartDisplayRoundedIcon
+                  sx={{ ...listIcon }}
+                ></SmartDisplayRoundedIcon>
+              </ListItem>
+              <ListItem disableGutters={true}>
+                <TwitterIcon sx={{ ...listIcon }}></TwitterIcon>
+              </ListItem>
+              <ListItem disableGutters={true}>
+                <LinkedInIcon sx={{ ...listIcon }}></LinkedInIcon>
+              </ListItem>
+              <ListItem disableGutters={true}>
+                <InstagramIcon sx={{ ...listIcon }}></InstagramIcon>
+              </ListItem>
+            </List>
+            <Box
+              sx={{
+                display: {
+                  md: "block",
+                  sm: "none",
+                  xs: "none",
+                },
+              }}
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3895.9130069744983!2d130.83269149999998!3d-12.4555141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2cc0919f35fa407b%3A0xd29e9a4ffb24940a!2s128%20Mitchell%20St%2C%20Larrakeyah%20NT%200820%2C%20Australia!5e0!3m2!1sen!2smm!4v1681286114835!5m2!1sen!2smm"
+                title="ismart-map"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </Box>
+          </Grid>
+          <Box sx={{ ...map, width: "100%", px: 2 }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3895.9130069744983!2d130.83269149999998!3d-12.4555141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2cc0919f35fa407b%3A0xd29e9a4ffb24940a!2s128%20Mitchell%20St%2C%20Larrakeyah%20NT%200820%2C%20Australia!5e0!3m2!1sen!2smm!4v1681286114835!5m2!1sen!2smm"
+              title="ismart-map"
+              loading="lazy"
+              style={{ width: "100%" }}
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </Box>
+        </Grid>
+
+
+          const footerGrid = {
+    color: "#fff",
+    py: 2,
+    width: "100%",
+  };
+
+  const map = {
+    display: {
+      sm: "block",
+      md: "none",
+    },
+  };
+
+  
+let initialState = {
+  msg: "Init",
+  counterDelay: 1000, // 1 sec
+  beginningCount: 35,
+  recordingCount: 15,
+  beginningCounterCount: 1,
+  // beginningCounterText: '10',
+  recordingCounterCount: 1,
+  recordingCounterText: "01",
+  isStatusBeginning: false,
+  isStatusRecording: false,
+
+  stoppedBeginInterval: false,
+  stoppedRecordInterval: false,
+
+  isPlaying: false,
+  isRecording: false, //false
+  isFinish: false,
+  blobURL: "",
+  blob: null,
+  isBlocked: false,
+  page: 1,
+  dPrev: false,
+  dNext: false,
+  answer: false,
+  answerLoading: false,
+  overall_result: [],
+  btn_disable: true,
+  selectedFile: null,
+  audio: new Audio({process.env.REACT_APP_FRONTEND_URL+"beep-01a.mp3"),
+};

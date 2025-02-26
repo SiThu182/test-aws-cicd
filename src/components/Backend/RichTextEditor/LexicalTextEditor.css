@@ -1,0 +1,11 @@
+.contentEditable {
+  width: 100%;
+  height: 200px;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+}
+
+.placeHolder {
+  position: absolute;
+  top: 0;
+}
