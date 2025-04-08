@@ -39,7 +39,7 @@ jobs:
           SOURCE: build/ # or dist/, whatever your build output directory is
           TARGET:  /var/www/html/azure/pteadmin/
           EXCLUDE: '.git/*' #Optional, but good practice
-          ARGS: '-rltgoDzvO' #Optional, but good practice, this keeps permissions and ownership
+           
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
