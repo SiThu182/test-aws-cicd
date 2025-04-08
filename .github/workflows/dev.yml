@@ -7,52 +7,47 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to EC2 on main branch push
+    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the files
         uses: actions/checkout@v2
 
-      # Step 2: Set up Node.js
+       # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20'  # Set your Node.js version here
 
-      # Step 3: Install dependencies
+      # Step 3: Install dependencies with CI=false to prevent warnings as errors
       - name: Install dependencies
         run: |
-          CI=false npm install --force
+          CI=false npm install -force
 
-      # Step 4: Build the project
+      # Step 4: Build the project with CI=false to prevent warnings as errors
       - name: Build project
         run: |
           CI=false npm run build
 
-      # Step 5: Deploy using rsync (via easingthemes/ssh-deploy)
       - name: Deploy to Server 1
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
-          SOURCE: build/
-          TARGET: /var/www/html/azure/pteadmin/
-          EXCLUDE: '.git/*'
-          ARGS: '-rltDzvO --no-group --no-perms'
-
-      # Step 6: Optional - Execute remote commands (e.g., permission fix, service restart)
-      - name: Execute post-deploy SSH commands
+          SOURCE: build/ # or dist/, whatever your build output directory is
+          TARGET:  /var/www/html/azure/pteadmin/
+          EXCLUDE: '.git/*' #Optional, but good practice
+          ARGS: '-rltgoDzvO' #Optional, but good practice, this keeps permissions and ownership
+      - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /var/www/html/azure/pteadmin/
-            echo "Deployment completed successfully."
-            # Optional: Uncomment if needed
-            # sudo chown -R www-data:www-data .
-            # sudo systemctl restart nginx
-            # npm run some-post-deploy-script
+            cd   /var/www/html/azure/pteadmin/
+            echo "Done"
+            # If you need to restart a service, do it here. For example:
+            # sudo systemctl restart your-service
