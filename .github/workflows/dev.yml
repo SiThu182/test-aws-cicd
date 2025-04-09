@@ -7,40 +7,48 @@ on:
 
 jobs:
   deploy:
+    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout the files
         uses: actions/checkout@v2
 
+       # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '20'  # Set your Node.js version here
 
+      # Step 3: Install dependencies with CI=false to prevent warnings as errors
       - name: Install dependencies
         run: |
-          CI=false npm install --force
+          CI=false npm install -force
 
+      # Step 4: Build the project with CI=false to prevent warnings as errors
       - name: Build project
         run: |
           CI=false npm run build
 
-      - name: Write SSH key
-        run: |
-          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          SOURCE: build/ # or dist/, whatever your build output directory is
+          TARGET:  /var/www/html/azure/pteadmin/
+          EXCLUDE: '.git/*' #Optional, but good practice
+          ARGS: '-rltDzv --no-group --no-perms'
 
-      - name: Deploy with rsync
-        run: |
-          rsync -rltDzv --no-group --no-perms -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" build/ ${{ secrets.USERNAME }}@${{ secrets.HOST_DNS }}:/var/www/html/azure/pteadmin/
-
-      - name: Remote post-deploy commands
+      - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /var/www/html/azure/pteadmin/
-            echo "Deployment done ✅"
+          #  cd   /var/www/html/azure/pteadmin/
+            #echo "Done"
+            # If you need to restart a service, do it here. For example:
+            # sudo systemctl restart your-service
