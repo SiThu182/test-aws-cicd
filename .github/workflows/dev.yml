@@ -48,6 +48,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
           #  cd   /var/www/html/azure/pteadmin/
-            echo "Done"
+            #echo "Done"
             # If you need to restart a service, do it here. For example:
             # sudo systemctl restart your-service
